@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prorecykling.pl/sitemap.xml
+Sitemap: https://prorecykling.com/sitemap.xml

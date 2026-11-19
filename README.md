@@ -70,5 +70,5 @@ Skrypty używają `window.i18n.t('klucz', 'polski tekst')` i zdarzenia `i18n:cha
 - wstawia do `<head>` każdej strony blok SEO między `<!-- seo:start -->` a `<!-- seo:end -->` (canonical, robots, Open Graph, Twitter, JSON-LD),
 - tworzy `sitemap.xml`, `robots.txt` i obraz `img/og-image.jpg`.
 
-Adres witryny jest w `scripts/site.config.json` (`siteUrl`). Po podpięciu własnej domeny zmień go i uruchom `npm run build`.
+Adres witryny jest w `scripts/site.config.json` (`siteUrl`). Domena produkcyjna: prorecykling.com (plik `CNAME`). Przy zmianie domeny zmień `siteUrl` i `CNAME`, potem `npm run build`.
 Tytuł i opis strony głównej oraz kontaktu edytuj w ich `<title>` i `<meta name="description">` – build przepisuje je do Open Graph/Twitter.
