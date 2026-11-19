@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wiktor-student.github.io/prorecykling.github.io/sitemap.xml
+Sitemap: https://prorecykling.pl/sitemap.xml
