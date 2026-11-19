@@ -1,0 +1,32 @@
+{
+  "name": "prorecykling",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Strona firmy PROrecykling – skup i ekologiczne przetwarzanie transformatorów.",
+  "type": "module",
+  "scripts": {
+    "start": "http-server . -p 8080 -c-1 -o",
+    "images": "node scripts/optimize-images.mjs",
+    "vendor": "node scripts/copy-vendor.mjs",
+    "lint:html": "html-validate *.html",
+    "lint:css": "stylelint \"css/**/*.css\"",
+    "lint:js": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\"",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "format": "prettier --write \"**/*.{css,js,mjs,json,md,webmanifest}\"",
+    "format:check": "prettier --check \"**/*.{css,js,mjs,json,md,webmanifest}\""
+  },
+  "dependencies": {
+    "countup.js": "^2.8.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "html-validate": "^11.21.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.10.1",
+    "sharp": "^0.35.5",
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0"
+  }
+}

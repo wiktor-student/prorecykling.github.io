@@ -1,167 +1,271 @@
-
 <!DOCTYPE html>
-
-<html>
+<html lang="pl">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title data-i18n="meta.index.title">PRORECYKLING – skup i recykling transformatorów | Rzeszów, cała Polska</title>
+        <meta name="description" content="Skup transformatorów, złomu i surowców wtórnych na terenie całej Polski. Odbiór D2D, natychmiastowa płatność, działamy 24/7. Rzeszów, Głogów Małopolski, Podkarpacie." data-i18n-attr="content:meta.index.desc">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+        <meta name="referrer" content="strict-origin-when-cross-origin">
+        <meta name="theme-color" content="#232d5a">
+        <link rel="manifest" href="site.webmanifest">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="pl_PL">
+        <meta property="og:site_name" content="PRORECYKLING">
+        <meta property="og:title" content="PRORECYKLING – skup i recykling transformatorów | Rzeszów, cała Polska" data-i18n-attr="content:meta.index.title">
+        <meta property="og:description" content="Skup transformatorów, złomu i surowców wtórnych na terenie całej Polski. Odbiór D2D, natychmiastowa płatność, działamy 24/7. Rzeszów, Głogów Małopolski, Podkarpacie." data-i18n-attr="content:meta.index.desc">
+        <link rel="icon" href="img/favicon.ico" sizes="any">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/footer.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap" rel="stylesheet">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "PRORECYKLING",
+            "description": "Skup i ekologiczne przetwarzanie transformatorów na terenie całej Polski.",
+            "telephone": "+48792977793",
+            "email": "skuptransformatorow@gmail.com",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Diamentowa 24",
+                "postalCode": "36-060",
+                "addressLocality": "Głogów Małopolski",
+                "addressCountry": "PL"
+            },
+            "areaServed": "PL"
+        }
+        </script>
+        <script src="vendor/countup/countUp.umd.js" defer></script>
+        <script src="js/i18n.js" defer></script>
+        <script src="js/components/site-footer.js" defer></script>
+        <script src="js/script.js" defer></script>
+        <script src="js/reveal.js" defer></script>
+        <script src="js/numbers.js" defer></script>
     </head>
     <body>
+        <a class="skip-link" href="#main" data-i18n="skip">Przejdź do treści</a>
         <header>
             <div id="logo">
-                <img src="img/logo.png" alt="">
+                <a id="a23" href="index.html"><img src="img/logo.webp" alt="Logo firmy PRORECYKLING - skup transformatorów" data-i18n-attr="alt:logo.alt" width="160" height="65"></a>
             </div>
-            <div id="PLEN">
-                <p id="PL">PL</p>
-                <p>|</p>
-                <p id="EN">EN</p>
+            <nav id="header-navi" aria-label="Menu główne" data-i18n-attr="aria-label:aria.mainNav">
+                <ul class="l-header-navi">
+                    <li><a href="#main-header" data-i18n="nav.about">O firmie</a></li>
+                    <li><a href="#offer" data-i18n="nav.offer">Realizacje</a></li>
+                    <li><a href="#numbers" data-i18n="nav.numbers">Liczby</a></li>
+                </ul>
+            </nav>
+            
+            <a class="square-button" href="contact.html" data-i18n="nav.contact">Kontakt</a>
+
+            <div id="PLEN" role="group" aria-label="Język strony" data-i18n-attr="aria-label:aria.lang">
+                <button type="button" id="PL" class="lang-btn" data-lang="pl" lang="pl" aria-pressed="true" aria-label="Polski">PL</button>
+                <span aria-hidden="true">|</span>
+                <button type="button" id="EN" class="lang-btn" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button>
             </div>    
             <div id="menu-icon">
-                <img src="img/menu-icon.svg" alt="">
+
+                <button type="button" id="menu-button" class="menu-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg aria-hidden="true" focusable="false" class="hb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#000" stroke-width=".6" fill="rgba(0,0,0,0)" stroke-linecap="round">
+                        <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
+                            <animate id="hb-open" dur="0.2s" attributeName="d" values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze" begin="indefinite" />
+                            <animate id="hb-close" dur="0.2s" attributeName="d" values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze" begin="indefinite" />
+                        </path>
+                    </svg>
+                </button>
+
             </div>
         </header>
+
+        <nav id="mobile-menu" class="hidden-menu" aria-label="Menu mobilne" data-i18n-attr="aria-label:aria.mobileNav">
+            <ul>
+                <li><a href="#main-header" data-i18n="nav.about">O firmie</a></li>
+                <li><a href="#offer" data-i18n="nav.offer">Realizacje</a></li>
+                <li><a href="#numbers" data-i18n="nav.numbers">Liczby</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
+            </ul>
+        </nav>
         
-<div id="main">
+<main id="main">
             <div id="main-photo">
-                <img src="img/Transformer.PNG" alt="">
+                <img src="img/IMG_9979.webp" id="img1" alt="Transformator w Warszawie - skup transformatorów" data-i18n-attr="alt:hero.alt1" width="1400" height="1050" fetchpriority="high" decoding="async">
+                <img src="img/IMG_9979.webp" id="img2" alt="Transformator w Rzeszowie - skup transformatorów" data-i18n-attr="alt:hero.alt2" width="1400" height="1050" loading="lazy" decoding="async">
             </div>
+
+         
 
             <div id="main-header">
-                <h2>Zmieniamy <br> świat na <span style="color: rgb(76, 175, 80);">lepszy</span>.</h2>
+                <div id="main-pc">
+                    <div id="main-h">
+                        <h2 data-i18n-html="hero.title">Zmieniamy <br> świat na <span class="accent">lepszy</span>.</h2>
+                        <img src="img/recycle.webp" alt="Symbol recyklingu - PRORECYKLING" data-i18n-attr="alt:hero.recycle" width="200" height="200" loading="lazy" decoding="async">
+                    </div>
+                    <h3 data-i18n-html="hero.lead">Specjalizujemy się w <strong>skupie</strong> i przetwarzaniu <strong>transformatorów</strong> na terenie <strong>całej Polski</strong>. Zapewniamy atrakcyjne warunki transakcji. </h3>
+                </div>
+                    <a class="main-button" href="#square-nav" data-i18n="hero.more">Więcej...</a>
+            </div>
 
-                <div id="main-recycle">
-                    <img src="img/recycle.png" alt="">
+            <div id="square-steps">
+                <div class="square" id="square-nav">
+                    
+                        <h2 data-i18n-html="adv.title">Nasze <span class="accent">zalety</span>.</h2>
+                        <div class="square1"><img src="img/technology.webp" alt="Technologia - dostępność transformatorów 24/7" data-i18n-attr="alt:adv.alt1" width="200" height="200" loading="lazy" decoding="async"> <h3 data-i18n="adv.1">Jesteśmy dostępni 24/7!</h3></div>
+                        <div class="square2"><h3 data-i18n="adv.2">Zawsze się dogadamy!</h3> <img src="img/handshake.webp" alt="Uścisk dłoni - dogodne warunki skupu transformatorów" data-i18n-attr="alt:adv.alt2" width="200" height="200" loading="lazy" decoding="async"></div>
+                        <div class="square1"><img src="img/pickup-car.webp" alt="Samochód dostawczy - odbiór transformatorów door-to-door" data-i18n-attr="alt:adv.alt3" width="200" height="200" loading="lazy" decoding="async"><h3 data-i18n="adv.3"> Odbierzemy towar D2D!</h3></div>
+                        <div class="square2"><h3 data-i18n="adv.4">Płacimy natychmiastowo!</h3> <img src="img/money.webp" alt="Pieniądze - natychmiastowa zapłata za transformatory" data-i18n-attr="alt:adv.alt4" width="200" height="200" loading="lazy" decoding="async"></div>
+                        <div class="square1"><img src="img/three-star.webp" alt="Trzy gwiazdki - satysfakcja klientów" data-i18n-attr="alt:adv.alt5" width="200" height="200" loading="lazy" decoding="async"> <h3 data-i18n="adv.5">Obustronna satysfakcja!</h3></div>
+                        <a class="square-button" href="contact.html" data-i18n="cta.contactUs">Skontaktuj się!</a>
+                    
+                </div>
+
+                <div id="steps">
+                    <div class="art-steps">
+                        <h4 class="h4-steps-number">1</h4>
+                        <h3 class="h3-steps-title" data-i18n="nav.contact">Kontakt</h3>
+
+                    </div>
+            
+                    <div class="art-steps">
+                        <h4 class="h4-steps-number">2</h4>
+                        <h3 class="h3-steps-title" data-i18n="steps.pickup">Odbiór</h3>
+
+                    </div>
+            
+                    <div class="art-steps">
+                        <h4 class="h4-steps-number">3</h4>
+                        <h3 class="h3-steps-title" data-i18n="steps.done">Finalizacja</h3>
+
+                    </div>
                 </div>
             </div>
-            
-            <div id="main-text">
-                <h2>Specjalizujemy się w <strong>skupie</strong> i <strong>ekologicznym</strong> przetwarzaniu <strong>transformatorów</strong>. Zapewniamy atrakcyjne warunki sprzedaży.</h2>
-            </div>
-
-            <button type="button" class="main-button">
-                Więcej...
-            </button>
-
-
-        <div class="square">
-
-            <h1>Nasze <span style="color: rgb(76, 175, 80);">zalety</span>.</h1>
-
-            <div class="square1"><img src="img/technology.png" alt=""> <h3>Jesteśmy dostępni 24/7!</h3></div>
-
-            <div class="square2"><h3>Zawsze się dogadamy!</h3> <img src="handshake.png" alt=""></div>
-
-            <div class="square1"><img src="img/pickup-car.png" alt=""><h3> Odbierzemy towar D2D!</h3></div>
-            
-            <div class="square2"><h3>Płacimy natychmiastowo!</h3> <img src="money.png" alt=""></div>
-            
-            <div class="square1"><img src="img/three-star.png" alt=""> <h3>Obustronna satysfakcja!</h3></div>
-
-            <button type="button" class="square-button">Skontaktuj się!</button>
-
-        </div>
-
-</div>        
+</main>        
 
 
 
 <div id="offer">
-            <h1>Nasze <span style="color: rgb(76, 175, 80);">realizacje</span>.</h1>
+            <h2 id="offer-h2" data-i18n-html="offer.title">Nasze <span class="accent">realizacje</span>.</h2>           
 
             <div id="implementations">
                 <div class="implementation">
-                    <img src="img/Przechwytywanie.PNG"> 
-                    <h2>Urząd skarbowy w Rzeszowie</h2>
-                    <p>Realizacja 400 ton transformatorów sdfsdfsfsdf sdfsasfgsd gfgdsfdsgsd gdsdsfg gsdfg sd gfsdg sdf gdssfgd sfgdsgf sdgfdsfg sdg fdsfgd s</p>
-                    <button type="button">Czytaj więcej ➔</button>
+                    <img src="img/IMG_8469.webp" alt="Realizacja skupu transformatorów w Rzeszowie" data-i18n-attr="alt:city.rzeszow.alt" width="800" height="1067" loading="lazy" decoding="async"> 
+                    <h2 data-i18n="city.rzeszow.title">Realizacje Rzeszów</h2>
+                    <p class="implementation-text" data-i18n="city.rzeszow.text">Zapraszamy do zapoznania się z naszymi realizacjami wykonanymi na terenie Rzeszowa oraz okolic. Specjalizujemy się w przeprowadzaniu kompleksowych odbiorów transformatorów.</p>
+                    <a class="implementation-button" href="implementations.html?miasto=rzeszow" data-i18n="offer.readMore">Czytaj więcej ➔</a>
                 </div>
 
                 <div class="implementation">
-                    <img src="img/deal.png"> 
-                    <h2>Urząd skarbowy w Rzeszowie</h2>
-                    <p>Realizacja 400 ton transformatorów sdfsdfsfsdf sdfsasfgsd gfgdsfdsgsd gdsdsfg gsdfg sd gfsdg sdf gdssfgd sfgdsgf sdgfdsfg sdg fdsfgd s</p>
-                    <button type="button">Czytaj więcej ➔</button>
+                    <img src="img/WARSZAWA1.webp" alt="Realizacja skupu transformatorów w Warszawie" data-i18n-attr="alt:city.warszawa.alt" width="800" height="1067" loading="lazy" decoding="async"> 
+                    <h2 data-i18n="city.warszawa.title">Realizacje Warszawa</h2>
+                    <p class="implementation-text" data-i18n="city.warszawa.text">Zapraszamy do zapoznania się z naszymi realizacjami wykonanymi na terenie Warszawy oraz okolic. Specjalizujemy się w przeprowadzaniu kompleksowych odbiorów transformatorów.</p>
+                    <a class="implementation-button" href="implementations.html?miasto=warszawa" data-i18n="offer.readMore">Czytaj więcej ➔</a>
                 </div>
 
                 <div class="implementation">
-                    <img src="img/Transformer.PNG"> 
-                    <h2>Urząd skarbowy w Rzeszowie</h2>
-                    <p>Realizacja 400 ton transformatorów sdfsdfsfsdf sdfsasfgsd gfgdsfdsgsd gdsdsfg gsdfg sd gfsdg sdf gdssfgd sfgdsgf sdgfdsfg sdg fdsfgd s</p>
-                    <button type="button">Czytaj więcej ➔</button>
+                    <img src="img/KRAKOW.webp" alt="Realizacja skupu transformatorów w Krakowie" data-i18n-attr="alt:city.krakow.alt" width="800" height="1067" loading="lazy" decoding="async"> 
+                    <h2 data-i18n="city.krakow.title">Realizacje Kraków</h2>
+                    <p class="implementation-text" data-i18n="city.krakow.text">Zapraszamy do zapoznania się z naszymi realizacjami wykonanymi na terenie Krakowa oraz okolic. Specjalizujemy się w przeprowadzaniu kompleksowych odbiorów transformatorów.</p>
+                    <a class="implementation-button" href="implementations.html?miasto=krakow" data-i18n="offer.readMore">Czytaj więcej ➔</a>
+                </div>
+
+                <div class="implementation">
+                    <img src="img/IMG_5228.webp" alt="Realizacja skupu transformatorów w Łodzi" data-i18n-attr="alt:city.lodz.alt" width="800" height="1731" loading="lazy" decoding="async"> 
+                    <h2 data-i18n="city.lodz.title">Realizacje Łódź</h2>
+                    <p class="implementation-text" data-i18n="city.lodz.text">Zapraszamy do zapoznania się z naszymi realizacjami wykonanymi na terenie Łodzi oraz okolic. Specjalizujemy się w przeprowadzaniu kompleksowych odbiorów transformatorów.</p>
+                    <a class="implementation-button" href="implementations.html?miasto=lodz" data-i18n="offer.readMore">Czytaj więcej ➔</a>
                 </div>
             </div>
 
-        
+            <div class="gallery-buttons">
+                <button type="button" id="prev" aria-label="Poprzednie realizacje" data-i18n-attr="aria-label:offer.prev">◀</button>
+                <button type="button" id="next" aria-label="Następne realizacje" data-i18n-attr="aria-label:offer.next">▶</button>
+              </div>   
+    </div>
+     
+    <div id="numbers-background-color">  
+        <div id="numbers">
 
-        <div class="square special">
+                <h2 data-i18n-html="numbers.title">Firma w <span class="accent">liczbach</span>.</h2>
 
-            <h1>PROrecykling w <span style="color: rgb(76, 175, 80);">liczbach</span>.</h1>
+                    <div class="numbers-box" id="numbers-box-first">
+                        <div class="numbers-box-left">
+                            <p data-i18n="numbers.1.label">Założenie</p>
+                            <h3 data-i18n="numbers.1.value">2 września 2022</h3>
 
-            <div class="square1"> <h3>Kontakt <span style="color: rgb(35, 45, 90); font-size: 30px; font-weight: bolder;">7</span> dni w tygodniu.</h3></div>
+                            <p class="hidden-display" id="numbers-box-first-p" data-i18n="numbers.1.text">Nasza firma posiada ponad trzyletnie doświadczenie. Prężnie się rozwijamy. Od początku istnienia stawiamy na jakość, terminowość oraz pełne zaangażowanie w każdą realizację.</p>
+                        </div>
+                        <div class="numbers-box-right">
+                            <button type="button" class="numbers-toggle" aria-expanded="false" aria-controls="numbers-box-first-p" aria-label="Pokaż szczegóły: Założenie">
+                                <img class="arrow-down" src="img/angle-small-down.svg" alt="" width="24" height="24">
+                                <img class="arrow-up" src="img/angle-small-up.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                    </div>
 
-            <div class="square2"><h3>Ponad <span style="color: rgb(76, 175, 80); font-size: 30px; font-weight: bolder;">90</span> odebranych transformatorów.</h3></div>
+                    <div class="numbers-box" id="numbers-box-second">
+                        <div class="numbers-box-left">
+                            <p data-i18n="numbers.2.label">Kontakt telefoniczny</p>
+                            <h3>24/7</h3>
 
-            <div class="square1"><h3> Dojeżdżamy do ponad <span style="color: rgb(35, 45, 90); font-size: 30px; font-weight: bolder;">23</span> miejscowości.</h3></div>
-            
-            <div class="square2"><h3>Działamy <span style="color: rgb(76, 175, 80); font-size: 30px; font-weight: bolder;">5</span> lat na rynku.</h3></div>
-            
-            <div class="square1"><h3>Odbiór zamówienia w <span style="color: rgb(35, 45, 90); font-size: 30px; font-weight: bolder;">24</span> h.</h3></div>
+                            <p class="hidden-display" id="numbers-box-second-p" data-i18n="numbers.2.text"> Jesteśmy dostępni dla naszych klientów przez całą dobę, siedem dni w tygodniu. Wiemy, jak ważna jest szybka reakcja i stała komunikacja, dlatego zapewniamy nieprzerwane wsparcie techniczne i doradcze niezależnie od pory dnia.</p>
+                        </div>
+                        <div class="numbers-box-right">
+                            <button type="button" class="numbers-toggle" aria-expanded="false" aria-controls="numbers-box-second-p" aria-label="Pokaż szczegóły: Kontakt telefoniczny">
+                                <img class="arrow-down" src="img/angle-small-down.svg" alt="" width="24" height="24">
+                                <img class="arrow-up" src="img/angle-small-up.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                    </div>
 
-            <button type="button" class="square-button">Skontaktuj się!</button>
+                    <div class="numbers-box" id="numbers-box-third">
+                        <div class="numbers-box-left">
+                            <p data-i18n="numbers.3.label">Odwiedzone miejscowości</p>
+                            <h3 data-countup="32">32</h3>
+
+                            <p class="hidden-display" id="numbers-box-third-p" data-i18n="numbers.3.text">Zrealizowaliśmy odbiory w 32 miejscowościach w całej Polsce. Do każdego zlecenia podchodzimy indywidualnie, oferując kompleksową obsługę – bez względu na lokalizację.</p>
+                        </div>
+                        <div class="numbers-box-right">
+                            <button type="button" class="numbers-toggle" aria-expanded="false" aria-controls="numbers-box-third-p" aria-label="Pokaż szczegóły: Odwiedzone miejscowości">
+                                <img class="arrow-down" src="img/angle-small-down.svg" alt="" width="24" height="24">
+                                <img class="arrow-up" src="img/angle-small-up.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="numbers-box" id="numbers-box-fourth">
+                        <div class="numbers-box-left">
+                            <p data-i18n="numbers.4.label">Odebrane transformatory</p>
+                            <h3 data-countup="100" data-prefix="&gt;">&gt;100</h3>
+
+                            <p class="hidden-display" id="numbers-box-fourth-p" data-i18n="numbers.4.text">Nasze doświadczenie obejmuje zarówno małe jednostki, jak i ciężkie transformatory ważące nawet kilkadziesiąt ton. Działamy zgodnie z obowiązującymi normami i z dbałością o każdy szczegół.</p>
+                        </div>
+                        <div class="numbers-box-right">
+                            <button type="button" class="numbers-toggle" aria-expanded="false" aria-controls="numbers-box-fourth-p" aria-label="Pokaż szczegóły: Odebrane transformatory">
+                                <img class="arrow-down" src="img/angle-small-down.svg" alt="" width="24" height="24">
+                                <img class="arrow-up" src="img/angle-small-up.svg" alt="" width="24" height="24">
+                            </button>
+                        </div>
+                    </div>
 
         </div>
 
-
-</div>
-
-<div id="footer">
-        <div id="left">
-            <h2>O FIRMIE</h2>
-                <ul>
-                    <li><strong>PROrecykling</strong></li>
-                    <li><strong>Diamentowa 24</strong></li>
-                    <li><strong>Głogów Małopolski</strong></li>
-                    <li><strong>36-060</strong></li>
-                    <li><strong>Skup transformatorów</strong></li>
-                    <li><strong>Najlepsze ceny</strong></li>
-                    <li><strong>Najszybsza realizacja</strong></li>
-                    <li><strong>Kompleksowe usługi</strong></li>
-                </ul>
-        </div>
-
-        <div id="line"></div>
-
-        <div id="right">
-            <h2>KONTAKT</h2>
-                <ul>
-                    <li><strong>609 727 013</strong></li>
-                    <li><strong>faza@gmail.com</strong></li>
-                </ul>
-            
-            <div id="social">
-                <img src="img/x.avif" alt="">
-                <img src="img/x.avif" alt="">
-                <img src="img/x.avif" alt="">
-                <img src="img/x.avif" alt="">
-                <img src="img/x.avif" alt="">
-                <img src="img/x.avif" alt="">
-            </div>
-
-            <p>PROrecykling copyright</p>
-        </div>
-</div>
-        
+        <h1 data-i18n-html="seo.h1">
+            Recykling i Skup Transformatorów – <span class="accent">PRORECYKLING</span>
+        </h1>  
+    </div>
+    
 
 
-
-        
-        <script src="script.js" async defer></script>
+    <site-footer>
+            <footer class="site-footer">
+                <div class="site-footer__inner">
+                    <p>PRORECYKLING, Diamentowa 24, 36-060 Głogów Małopolski. Tel. <a href="tel:+48792977793">792 977 793</a>, <a href="mailto:skuptransformatorow@gmail.com">skuptransformatorow@gmail.com</a></p>
+                </div>
+            </footer>
+        </site-footer>
     </body>
 </html>

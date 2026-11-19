@@ -1,0 +1,12 @@
+{
+  "favicon.png": {
+    "webp": "favicon.webp",
+    "width": 150,
+    "height": 150
+  },
+  "logo.png": {
+    "webp": "logo.webp",
+    "width": 160,
+    "height": 65
+  }
+}

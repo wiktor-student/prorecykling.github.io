@@ -1,0 +1,154 @@
+{
+  "cities": [
+    {
+      "id": "rzeszow",
+      "name": "Rzeszów",
+      "locative": "w Rzeszowie",
+      "genitive": "Rzeszowa",
+      "items": [
+        {
+          "id": "rzeszow-1",
+          "title": "Urząd skarbowy w Rzeszowie",
+          "date": "2024-06-21",
+          "location": "Rzeszów ul. Geodetów",
+          "text": "Odbiór dwóch transformatorów z Urzędu Skarbowego w Rzeszowie, o łącznej wadze 5 ton. Z uwagi na małą przestrzeń załadunku musieliśmy wykorzystać samochód ciężarowy z HDS.",
+          "media": {
+            "type": "video",
+            "src": "img/62A6B19F-D22B-4787-A8C0-D9BFC38310C5.MP4",
+            "alt": "Realizacja skupu transformatorów w Rzeszowie"
+          },
+          "en": {
+            "title": "Tax Office in Rzeszów",
+            "location": "Rzeszów, ul. Geodetów",
+            "text": "Pickup of two transformers from the Tax Office in Rzeszów, with a total weight of 5 tons. Because of the limited loading space we had to use a truck with a hydraulic crane (HDS).",
+            "alt": "Transformer buyback project in Rzeszów"
+          }
+        },
+        {
+          "id": "rzeszow-2",
+          "title": "Fabryka urządzeń wentylacyjnych TYWENT",
+          "date": "2023-11-24",
+          "location": "Tyczyn ul. Orkana",
+          "text": "Odbiór trzech transformatorów z firmy TYWENT z Tyczyna, o łącznej wadze 9 ton. Do wskazania ciężaru użyliśmy specjalistycznej wagi dźwigowej.",
+          "media": {
+            "type": "image",
+            "src": "img/tywent.webp",
+            "alt": "Odbiór transformatorów z fabryki TYWENT w Tyczynie",
+            "width": 800,
+            "height": 995
+          },
+          "en": {
+            "title": "TYWENT ventilation equipment factory",
+            "location": "Tyczyn, ul. Orkana",
+            "text": "Pickup of three transformers from TYWENT in Tyczyn, with a total weight of 9 tons. We used a specialised crane scale to determine the weight.",
+            "alt": "Transformer pickup from the TYWENT factory in Tyczyn"
+          }
+        },
+        {
+          "id": "rzeszow-3",
+          "title": "Stadnina koni Kielnarowa",
+          "date": "2025-02-16",
+          "location": "Rzeszów, Kielnarowa",
+          "text": "Odbiór jednego transformatora ze stadniny koni w Kielnarowej, o łącznej wadze 0,4 tony. Podejmujemy się również najmniejszych zleceń, przy których także zachowujemy dobre stawki, jak i szybki odbiór.",
+          "media": {
+            "type": "image",
+            "src": "img/deal.webp",
+            "alt": "Odbiór transformatora ze stadniny koni w Kielnarowej",
+            "width": 800,
+            "height": 800
+          },
+          "en": {
+            "title": "Kielnarowa horse stud farm",
+            "location": "Rzeszów, Kielnarowa",
+            "text": "Pickup of one transformer from the horse stud farm in Kielnarowa, with a total weight of 0.4 tons. We also take on the smallest orders, for which we keep good rates and fast pickup.",
+            "alt": "Transformer pickup from the horse stud farm in Kielnarowa"
+          }
+        }
+      ]
+    },
+    {
+      "id": "warszawa",
+      "name": "Warszawa",
+      "locative": "w Warszawie",
+      "genitive": "Warszawy",
+      "items": [
+        {
+          "id": "warszawa-1",
+          "title": "PGE Siekierki",
+          "date": "2025-04-07",
+          "location": "Warszawa ul. Augustówka",
+          "text": "Odbiór jednego transformatora z PGE Siekierki w Warszawie, o łącznej wadze 150 ton. Przy tak dużych gabarytach transformatora rozbiórka odbywała się na miejscu pod nadzorem PGE.",
+          "media": {
+            "type": "image",
+            "src": "img/IMG_9984.webp",
+            "alt": "Realizacja skupu transformatorów w Warszawie",
+            "width": 800,
+            "height": 1067
+          },
+          "en": {
+            "title": "PGE Siekierki",
+            "location": "Warsaw, ul. Augustówka",
+            "text": "Pickup of one transformer from PGE Siekierki in Warsaw, with a total weight of 150 tons. Due to the size of the transformer, it was dismantled on site under PGE supervision.",
+            "alt": "Transformer buyback project in Warsaw"
+          }
+        }
+      ]
+    },
+    {
+      "id": "krakow",
+      "name": "Kraków",
+      "locative": "w Krakowie",
+      "genitive": "Krakowa",
+      "items": [
+        {
+          "id": "krakow-1",
+          "title": "ZRE Kraków",
+          "date": "2023-07-12",
+          "location": "Kraków ul. Kluczborska",
+          "text": "Odbiór dwóch transformatorów z ZRE w Krakowie, o łącznej wadze 7 ton. We współpracy z ZRE Kraków odebraliśmy 2 transformatory z MPEC Kraków.",
+          "media": {
+            "type": "image",
+            "src": "img/IMG_4318.webp",
+            "alt": "Realizacja skupu transformatorów w Krakowie",
+            "width": 800,
+            "height": 1067
+          },
+          "en": {
+            "title": "ZRE Kraków",
+            "location": "Kraków, ul. Kluczborska",
+            "text": "Pickup of two transformers from ZRE in Kraków, with a total weight of 7 tons. In cooperation with ZRE Kraków we collected 2 transformers from MPEC Kraków.",
+            "alt": "Transformer buyback project in Kraków"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lodz",
+      "name": "Łódź",
+      "locative": "w Łodzi",
+      "genitive": "Łodzi",
+      "items": [
+        {
+          "id": "lodz-1",
+          "title": "Zgierz Łódź",
+          "date": "2024-09-20",
+          "location": "Łódź ul. Mechaników",
+          "text": "Odbiór trzech transformatorów z Zgierz w Łodzi, o łącznej wadze 8 ton.",
+          "media": {
+            "type": "image",
+            "src": "img/IMG_5528.webp",
+            "alt": "Realizacja skupu transformatorów w Łodzi",
+            "width": 800,
+            "height": 1043
+          },
+          "en": {
+            "title": "Zgierz, Łódź",
+            "location": "Łódź, ul. Mechaników",
+            "text": "Pickup of three transformers from Zgierz in Łódź, with a total weight of 8 tons.",
+            "alt": "Transformer buyback project in Łódź"
+          }
+        }
+      ]
+    }
+  ]
+}
