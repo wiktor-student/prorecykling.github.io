@@ -13,7 +13,8 @@
     "lint:js": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\"",
     "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
     "format": "prettier --write \"**/*.{css,js,mjs,json,md,webmanifest}\"",
-    "format:check": "prettier --check \"**/*.{css,js,mjs,json,md,webmanifest}\""
+    "format:check": "prettier --check \"**/*.{css,js,mjs,json,md,webmanifest}\"",
+    "build": "node scripts/build.mjs"
   },
   "dependencies": {
     "countup.js": "^2.8.0"

@@ -1,21 +1,22 @@
-/* Strona realizacji: jedna strona dla wszystkich miast, dane z data/implementations.json.
-   Miasto wybiera parametr ?miasto=… (np. implementations.html?miasto=warszawa).
-   Treści w dwóch językach: pola bazowe (PL) i item.en (EN), przełączane przez window.i18n. */
+/* Strony realizacji (realizacje-<miasto>.html).
+   HTML w języku polskim jest generowany statycznie (scripts/build.mjs) – dobry dla SEO i działa bez JS.
+   Ten skrypt tylko tłumaczy treść na angielski (i z powrotem) na podstawie data/implementations.json
+   oraz window.i18n. Zmiana miasta to zwykłe linki do osobnych stron. */
 (() => {
     'use strict';
 
     const DATA_URL = 'data/implementations.json';
-    const DEFAULT_CITY = 'rzeszow';
 
     const list = document.getElementById('implementations');
-    const tabs = document.getElementById('city-tabs');
     const titleEl = document.getElementById('city-title');
     const introEl = document.getElementById('city-intro');
-    if (!list || !tabs) return;
+    if (!list || !list.dataset.city) return;
 
     const metaDescription = document.querySelector('meta[name="description"]');
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDescription = document.querySelector('meta[property="og:description"]');
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
 
     const t = (key, fallback) => (window.i18n ? window.i18n.t(key, fallback) : fallback);
     const isEnglish = () => window.i18n && window.i18n.lang === 'en';
@@ -104,94 +105,63 @@
         return card;
     };
 
-    const cityFromUrl = (cities) => {
-        const requested = new URLSearchParams(window.location.search).get('miasto');
-        return cities.find((c) => c.id === requested) || cities.find((c) => c.id === DEFAULT_CITY) || cities[0];
-    };
-
-    const render = (city) => {
+    const render = (city, cities) => {
         const english = isEnglish();
         const name = t(`city.${city.id}`, city.name);
 
         const title = english
-            ? t('impl.metaTitle', 'Realizacje {name} – PRORECYKLING').replace('{name}', name)
-            : `Realizacje ${city.name} – PRORECYKLING`;
+            ? t('impl.metaTitle', '').replace('{name}', name)
+            : `Skup transformatorów ${city.locative} – realizacje | PRORECYKLING`;
         const description = english
             ? t('impl.metaDesc', '').replace('{name}', name)
-            : `Przykładowe odbiory transformatorów ${city.locative} i okolicach wykonane przez PRORECYKLING. Sprawdź realizacje i zamów odbiór.`;
-        const heading = english
-            ? t('impl.heading', 'Odbiory {name}').replace('{name}', name)
-            : `Odbiory ${city.locative}`;
+            : `Zobacz nasze realizacje: odbiór i skup transformatorów ${city.locative} i okolicach. Daty, lokalizacje i opisy odbiorów. Zamów odbiór transformatora.`;
+        const heading = english ? t('impl.heading', '').replace('{name}', name) : `Odbiory ${city.locative}`;
         const intro = english
             ? t('impl.intro', '')
             : 'Sprawdź nasze przykładowe odbiory z {city} oraz skontaktuj się z nami w celu ustalenia odbioru.';
-        const cityLabel = english ? name : city.genitive;
 
         document.title = title;
-        if (metaDescription) metaDescription.content = description;
-        if (ogTitle) ogTitle.content = title;
-        if (ogDescription) ogDescription.content = description;
+        [metaDescription, ogDescription, twitterDescription].forEach((meta) => {
+            if (meta) meta.content = description;
+        });
+        [ogTitle, twitterTitle].forEach((meta) => {
+            if (meta) meta.content = title;
+        });
         if (titleEl) titleEl.textContent = heading;
         if (introEl) {
+            const label = english ? name : city.genitive;
             introEl.innerHTML = intro.replace(
                 '{city}',
-                `<strong><span class="accent">${escapeHtml(cityLabel)}</span></strong>`
+                `<strong><span class="accent">${escapeHtml(label)}</span></strong>`
             );
         }
 
-        tabs.querySelectorAll('a').forEach((link) => {
-            const tabCity = link.dataset.city;
-            const known = currentCities.find((c) => c.id === tabCity);
-            link.textContent = t(`city.${tabCity}`, known ? known.name : link.textContent);
-            if (tabCity === city.id) link.setAttribute('aria-current', 'page');
-            else link.removeAttribute('aria-current');
-        });
-
         list.replaceChildren(...city.items.map(buildCard));
         list.scrollLeft = 0;
-        list.setAttribute('aria-busy', 'false');
+        return cities;
     };
 
-    const showError = () => {
-        const message = el(
-            'p',
-            'implementation-error',
-            t('impl.error', 'Nie udało się wczytać realizacji. Odśwież stronę lub skontaktuj się z nami.')
-        );
-        message.setAttribute('role', 'alert');
-        list.replaceChildren(message);
-        list.setAttribute('aria-busy', 'false');
+    let data = null;
+    let renderedEnglish = false;
+
+    const update = async () => {
+        const wantEnglish = isEnglish();
+        // polski jest już w HTML – przerysowujemy tylko po zmianie języka
+        if (!wantEnglish && !renderedEnglish) return;
+
+        try {
+            if (!data) {
+                const response = await fetch(DATA_URL);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                data = (await response.json()).cities;
+            }
+            const city = data.find((c) => c.id === list.dataset.city);
+            if (city) render(city, data);
+            renderedEnglish = wantEnglish;
+        } catch {
+            /* zostaje wersja polska wygenerowana statycznie */
+        }
     };
 
-    let currentCities = [];
-    let currentCity = null;
-
-    fetch(DATA_URL)
-        .then((response) => {
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return response.json();
-        })
-        .then(({ cities }) => {
-            currentCities = cities;
-            currentCity = cityFromUrl(cities);
-            render(currentCity);
-
-            // Przełączanie miast bez przeładowania strony (z obsługą przycisku „wstecz”).
-            tabs.addEventListener('click', (event) => {
-                const link = event.target.closest('a[data-city]');
-                if (!link || event.metaKey || event.ctrlKey || event.shiftKey) return;
-                event.preventDefault();
-                window.history.pushState({}, '', link.href);
-                currentCity = cityFromUrl(cities);
-                render(currentCity);
-            });
-            window.addEventListener('popstate', () => {
-                currentCity = cityFromUrl(cities);
-                render(currentCity);
-            });
-
-            // zmiana języka – przerysuj aktualne miasto
-            document.addEventListener('i18n:change', () => render(currentCity));
-        })
-        .catch(showError);
+    document.addEventListener('i18n:change', update);
 })();

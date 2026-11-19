@@ -1,0 +1,17 @@
+{
+  "siteUrl": "https://wiktor-student.github.io/prorecykling.github.io",
+  "name": "PRORECYKLING",
+  "legalName": "PRORECYKLING",
+  "description": "Skup i ekologiczne przetwarzanie transformatorów na terenie całej Polski.",
+  "telephone": "+48792977793",
+  "email": "skuptransformatorow@gmail.com",
+  "address": {
+    "streetAddress": "Diamentowa 24",
+    "postalCode": "36-060",
+    "addressLocality": "Głogów Małopolski",
+    "addressRegion": "podkarpackie",
+    "addressCountry": "PL"
+  },
+  "sameAs": ["https://www.instagram.com/mateusz_slezakkk", "https://www.tiktok.com/@fazka332"],
+  "ogImage": "img/og-image.jpg"
+}

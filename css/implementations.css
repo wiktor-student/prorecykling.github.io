@@ -201,3 +201,7 @@
         background-color: var(--color-primary);
     }
 }
+
+.implementation .square-button {
+    align-self: flex-start;
+}

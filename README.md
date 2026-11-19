@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # PRORECYKLING
 
 Statyczna strona firmy PRORECYKLING – skup i recykling transformatorów.
@@ -6,13 +8,13 @@ Czysty HTML, CSS i JavaScript – bez frameworków i bez kroku budowania.
 ## Struktura
 
 ```
-index.html, contact.html, implementations.html (wszystkie miasta: ?miasto=rzeszow|warszawa|krakow|lodz), 404.html
+index.html, contact.html, realizacje-<miasto>.html (generowane), 404.html
 css/      style.css (tokeny, układ, responsywność), contact.css, implementations.css
 js/       i18n.js (przełącznik PL/EN), components/site-footer.js (wspólna stopka, Web Component), implementations.js (render z JSON), script.js (menu + karuzela), numbers.js (akordeon + liczniki), reveal.js (animacje wejścia)
 data/     implementations.json – realizacje (PL + pole "en"), i18n.en.json – tłumaczenia angielskie
 vendor/   biblioteki self-hosted (CountUp.js)
 img/      grafiki (oryginały + wygenerowane WebP używane na stronie)
-scripts/  narzędzia developerskie (obrazy, vendor)
+scripts/  narzędzia: build.mjs (SEO + strony miast), optimize-images.mjs, copy-vendor.mjs; templates/city.html
 ```
 
 ## Uruchomienie
@@ -54,3 +56,19 @@ Polski tekst jest w HTML (SEO, działa bez JS). Angielski ładuje się z `data/i
 Nowy tekst: dodaj do elementu `data-i18n="klucz"` (tekst), `data-i18n-html="klucz"` (HTML) lub
 `data-i18n-attr="alt:klucz"` (atrybuty) i wpisz tłumaczenie pod tym kluczem w `i18n.en.json`.
 Skrypty używają `window.i18n.t('klucz', 'polski tekst')` i zdarzenia `i18n:change`.
+=======
+
+# prorecykling.github.io
+
+> > > > > > > a26ccbdc33d3615a5c7c20cc483c98abcc249474
+
+## SEO i build
+
+`npm run build` (po każdej zmianie w `data/implementations.json` lub tytułach/opisach stron):
+
+- generuje statyczne strony `realizacje-<miasto>.html` z `data/implementations.json` (szablon: `scripts/templates/city.html`),
+- wstawia do `<head>` każdej strony blok SEO między `<!-- seo:start -->` a `<!-- seo:end -->` (canonical, robots, Open Graph, Twitter, JSON-LD),
+- tworzy `sitemap.xml`, `robots.txt` i obraz `img/og-image.jpg`.
+
+Adres witryny jest w `scripts/site.config.json` (`siteUrl`). Po podpięciu własnej domeny zmień go i uruchom `npm run build`.
+Tytuł i opis strony głównej oraz kontaktu edytuj w ich `<title>` i `<meta name="description">` – build przepisuje je do Open Graph/Twitter.

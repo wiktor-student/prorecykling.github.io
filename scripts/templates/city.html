@@ -2,10 +2,9 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
-        <title>Realizacje Rzeszów – PRORECYKLING</title>
-        <meta name="description" content="Przykładowe odbiory transformatorów w Rzeszowie i okolicach wykonane przez PRORECYKLING. Sprawdź realizacje i zamów odbiór.">
+        <title>{{TITLE}}</title>
+        <meta name="description" content="{{DESC}}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- dorobic krakow i warszawe -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
         <meta name="referrer" content="strict-origin-when-cross-origin">
         <meta name="theme-color" content="#232d5a">
@@ -13,8 +12,8 @@
         <meta property="og:type" content="website">
         <meta property="og:locale" content="pl_PL">
         <meta property="og:site_name" content="PRORECYKLING">
-        <meta property="og:title" content="Realizacje Rzeszów – PRORECYKLING">
-        <meta property="og:description" content="Przykładowe odbiory transformatorów w Rzeszowie i okolicach wykonane przez PRORECYKLING. Sprawdź realizacje i zamów odbiór.">
+        <meta property="og:title" content="{{TITLE}}">
+        <meta property="og:description" content="{{DESC}}">
         <link rel="icon" href="img/favicon.ico" sizes="any">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <link rel="stylesheet" href="css/contact.css">
@@ -77,22 +76,19 @@
                     </g>
                     </svg>
                 </a>
-                <h1 id="city-title">Odbiory w Rzeszowie</h1>
+                <h1 id="city-title">{{H1}}</h1>
             </div>
             <div id="main-contact-text">
-                <p id="city-intro">Sprawdź nasze przykładowe odbiory z <strong><span class="accent" id="city-genitive">Rzeszowa</span></strong> oraz skontaktuj się z nami w celu ustalenia odbioru.</p>
+                <p id="city-intro">{{INTRO}}</p>
             </div>
             
 
             <nav id="city-tabs" class="city-tabs" aria-label="Wybierz miasto" data-i18n-attr="aria-label:impl.choose">
-                <a data-city="rzeszow" href="?miasto=rzeszow" aria-current="page">Rzeszów</a>
-                <a data-city="warszawa" href="?miasto=warszawa">Warszawa</a>
-                <a data-city="krakow" href="?miasto=krakow">Kraków</a>
-                <a data-city="lodz" href="?miasto=lodz">Łódź</a>
+{{TABS}}
             </nav>
             <div id="offer">
-                <div id="implementations" aria-live="polite" aria-busy="true">
-                    <noscript><p class="implementation-error">Do wyświetlenia realizacji potrzebny jest JavaScript. <a href="contact.html">Skontaktuj się z nami</a>, aby poznać nasze realizacje.</p></noscript>
+                <div id="implementations" data-city="{{CITY_ID}}">
+{{CARDS}}
                 </div>
                 <div class="gallery-buttons">
                     <button type="button" id="prev" aria-label="Poprzednie realizacje" data-i18n-attr="aria-label:offer.prev">◀</button>
