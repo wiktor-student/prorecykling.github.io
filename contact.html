@@ -23,7 +23,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap" rel="stylesheet">        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=chat,mail,person&display=block">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=category,chat,mail,person&display=block">
  
         
    
@@ -187,6 +187,7 @@
                 <li><a href="index.html#main-header" data-i18n="nav.about">O firmie</a></li>
                 <li><a href="index.html#offer" data-i18n="nav.offer">Realizacje</a></li>
                 <li><a href="index.html#numbers" data-i18n="nav.numbers">Liczby</a></li>
+                <li><a href="skup-weglikow.html" data-i18n="nav.carbides">Węgliki</a></li>
                 <li><a href="contact.html" data-i18n="nav.contact">Kontakt</a></li>
             </ul>
         </nav>
@@ -348,6 +349,17 @@
                     <div class="form-field-right">
                         <label class="sr-only" for="contact-email" data-i18n="contact.form.email">Adres e-mail</label>
                         <input class="form-input" type="email" id="contact-email" name="email" placeholder="Adres e-mail" data-i18n-attr="placeholder:contact.form.email" autocomplete="email" inputmode="email" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <span class="material-symbols-outlined" aria-hidden="true">category</span>
+                    <div class="form-field-right">
+                        <label class="sr-only" for="contact-topic" data-i18n="contact.form.topic">Czego dotyczy zapytanie?</label>
+                        <select class="form-input" id="contact-topic" name="topic">
+                            <option value="transformatory" data-i18n="contact.topic.transformers">Skup transformatorów</option>
+                            <option value="weglik" data-i18n="contact.topic.carbides">Skup węglików spiekanych</option>
+                            <option value="inne" data-i18n="contact.topic.other">Inne zapytanie</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-field form-field--area">

@@ -269,6 +269,7 @@ body main {
 }
 
 #offer .implementation-button {
+    padding: 8px 10px; /* a11y: większy obszar dotyku */
     background: transparent;
     border-radius: 999px;
     color: var(--color-primary);
@@ -548,4 +549,9 @@ body .implementation-error {
     .square-button {
         min-width: 140px;
     }
+}
+
+/* karuzela jest kontenerem pozycjonowania – ukryty tekst (.sr-only) w kartach nie poszerza strony */
+#implementations {
+    position: relative;
 }

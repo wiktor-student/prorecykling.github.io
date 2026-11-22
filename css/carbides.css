@@ -1,0 +1,252 @@
+/* Skup węglików spiekanych: zapowiedź na stronie głównej i strona skup-weglikow.html */
+
+/* ---------- Zapowiedź na stronie głównej ---------- */
+.carbide-teaser {
+    margin: 0 auto;
+    padding: 28px 22px 6px;
+}
+
+.carbide-teaser__inner {
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 28px 24px;
+    border-radius: 28px;
+    color: #fff;
+    background:
+        radial-gradient(60% 90% at 100% 0%, rgb(76 175 80 / 28%) 0%, transparent 60%),
+        linear-gradient(145deg, var(--color-primary) 0%, #19204a 100%);
+    box-shadow: 0 18px 40px rgb(35 45 90 / 25%);
+}
+
+:where(.carbide-teaser) :where(*) {
+    margin: 0;
+}
+
+.carbide-teaser__eyebrow {
+    margin-bottom: 8px;
+    color: #b9e6bb;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.carbide-teaser h2 {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: var(--font-xl);
+}
+
+.carbide-teaser h2 .accent {
+    color: #7ed482; /* jaśniejsza zieleń: kontrast na granacie */
+}
+
+.carbide-teaser__text p:last-child {
+    max-width: 58ch;
+    color: rgb(255 255 255 / 82%);
+    line-height: 1.6;
+}
+
+.carbide-teaser__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.carbide-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 13px 22px;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    background: var(--color-accent);
+    color: #0f1530; /* ciemny tekst na zieleni: kontrast 6:1 */
+    font-size: var(--font-md);
+    font-weight: 700;
+    white-space: nowrap;
+    transition:
+        background-color 0.25s,
+        border-color 0.25s;
+}
+
+.carbide-btn:hover {
+    border-color: #5cbd60;
+    background: #5cbd60;
+}
+
+.carbide-btn--ghost {
+    border-color: rgb(255 255 255 / 45%);
+    background: transparent;
+    color: #fff;
+}
+
+.carbide-btn--ghost:hover {
+    border-color: #fff;
+    background: rgb(255 255 255 / 12%);
+}
+
+/* ---------- Strona skup-weglikow.html ---------- */
+.carbide-grid {
+    display: grid;
+    gap: 0;
+}
+
+.carbide-list,
+.carbide-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carbide-list li,
+.carbide-steps li {
+    position: relative;
+    margin: 0;
+    padding-left: 30px;
+    color: var(--ink, #1b2038);
+    font-size: var(--font-base);
+    line-height: 1.5;
+}
+
+.carbide-list li::before {
+    content: '';
+    position: absolute;
+    top: 0.4em;
+    left: 4px;
+    width: 14px;
+    height: 8px;
+    border-bottom: 3px solid var(--color-accent);
+    border-left: 3px solid var(--color-accent);
+    transform: rotate(-45deg);
+}
+
+.carbide-steps {
+    counter-reset: step;
+}
+
+.carbide-steps li {
+    counter-increment: step;
+}
+
+.carbide-steps li::before {
+    content: counter(step);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: var(--font-xs);
+    font-weight: 700;
+}
+
+.carbide-faq {
+    margin: 22px 0 8px;
+}
+
+.carbide-faq h2 {
+    margin: 0 0 14px;
+    font-size: var(--font-large);
+    color: var(--ink, #1b2038);
+}
+
+.faq-item {
+    margin: 0 0 10px;
+    border: 1px solid rgb(35 45 90 / 12%);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: var(--shadow-card, 0 4px 14px rgb(35 45 90 / 8%));
+}
+
+.faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    color: var(--ink, #1b2038);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    flex: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-primary);
+    transition: transform 0.25s;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 18px 18px;
+    color: var(--ink-soft, #3a415c);
+    line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+    .carbide-teaser__inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 36px 40px;
+    }
+
+    .carbide-teaser h2 {
+        font-size: var(--font-title);
+    }
+}
+
+@media (min-width: 1025px) {
+    .carbide-teaser {
+        width: clamp(70%, 95%, 1200px); /* ta sama szerokość co sekcje główna i realizacje */
+        padding: 36px 0 6px;
+    }
+
+    .carbide-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 8px;
+    }
+
+    .carbide-grid .main-contact-content {
+        margin: 22px 0;
+    }
+
+    .carbide-faq {
+        margin-top: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-item summary::after,
+    .carbide-btn {
+        transition: none;
+    }
+}

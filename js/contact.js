@@ -9,6 +9,13 @@
     if (!form) return;
 
     const status = document.getElementById('form-status');
+    const topic = document.getElementById('contact-topic');
+
+    // ?temat=weglik|transformatory|inne wstępnie wybiera temat (linki ze strony o węglikach)
+    if (topic) {
+        const requested = new URLSearchParams(window.location.search).get('temat');
+        if (requested && [...topic.options].some((option) => option.value === requested)) topic.value = requested;
+    }
     const t = (key, fallback) => (window.i18n ? window.i18n.t(key, fallback) : fallback);
 
     const setStatus = (text, state) => {
@@ -44,7 +51,9 @@
         }
 
         const data = new FormData(form);
-        const subject = encodeURIComponent(t('contact.form.subject', 'Zapytanie ze strony PRORECYKLING'));
+        const topicLabel = topic && topic.selectedOptions[0] ? topic.selectedOptions[0].textContent.trim() : '';
+        const baseSubject = t('contact.form.subject', 'Zapytanie ze strony PRORECYKLING');
+        const subject = encodeURIComponent(topicLabel ? `${baseSubject} – ${topicLabel}` : baseSubject);
         const body = encodeURIComponent(`${data.get('message')}\n\n--\n${data.get('name')}\n${data.get('email')}`);
 
         setStatus(t('contact.form.opening', 'Otwieram Twojego klienta poczty…'));

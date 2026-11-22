@@ -311,3 +311,13 @@ site-footer {
         color: #000;
     }
 }
+
+/* a11y: linki w stopce mają min. 24 px wysokości obszaru dotyku */
+.site-footer__col > ul a,
+.site-footer address a {
+    padding-block: 5px;
+}
+
+.site-footer__col > ul a {
+    display: inline-block;
+}

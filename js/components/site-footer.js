@@ -63,6 +63,7 @@
                 { label: t('nav.about', 'O firmie'), href: 'index.html#main-header' },
                 { label: t('nav.offer', 'Realizacje'), href: 'index.html#offer' },
                 { label: t('nav.numbers', 'Liczby'), href: 'index.html#numbers' },
+                { label: t('footer.carbides', 'Skup węglików'), href: 'skup-weglikow.html' },
                 { label: t('nav.contact', 'Kontakt'), href: 'contact.html' }
             ];
             const address = ['Diamentowa 24', '36-060 Głogów Małopolski', t('footer.country', 'Cała Polska')];

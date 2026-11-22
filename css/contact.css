@@ -22,6 +22,7 @@
 }
 
 #main-contact-bar a {
+    position: relative;
     margin: 0;
 }
 
@@ -309,7 +310,7 @@ input:focus {
 .form-input {
     display: block;
     width: 100%;
-    padding: 0;
+    padding: 4px 0;
     border: 0;
     background: transparent;
     color: var(--ink, #1b2038);
@@ -389,4 +390,11 @@ textarea.form-input {
         height: 45px;
         font-size: var(--font-base);
     }
+}
+
+/* a11y: obszar dotyku strzałki „wróć” (min. 24 px) bez zmiany układu */
+#main-contact-bar a::after {
+    content: '';
+    position: absolute;
+    inset: -14px -12px;
 }

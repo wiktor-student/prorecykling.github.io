@@ -130,6 +130,12 @@ const breadcrumb = (pageUrl, items) => ({
     itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item }))
 });
 
+/** Pytania i odpowiedzi z <details class="faq-item"> – jedno źródło prawdy: HTML strony. */
+const faqFromHtml = (html) =>
+    [
+        ...html.matchAll(/<details class="faq-item">\s*<summary[^>]*>([\s\S]*?)<\/summary>\s*<p[^>]*>([\s\S]*?)<\/p>/g)
+    ].map((m) => [m[1].trim(), m[2].trim()]);
+
 /* --------------------------------------------------------------------- strony */
 
 const pages = [
@@ -176,6 +182,38 @@ const pages = [
             ])
         ]
     },
+    {
+        file: 'skup-weglikow.html',
+        path: 'skup-weglikow.html',
+        priority: '0.9',
+        graph: (p, html) => [
+            business,
+            website,
+            {
+                '@type': 'WebPage',
+                '@id': `${p.url}#webpage`,
+                url: p.url,
+                name: p.title,
+                description: p.description,
+                inLanguage: 'pl',
+                isPartOf: { '@id': websiteId },
+                about: { '@id': businessId }
+            },
+            {
+                '@type': 'FAQPage',
+                '@id': `${p.url}#faq`,
+                mainEntity: faqFromHtml(html).map(([question, answer]) => ({
+                    '@type': 'Question',
+                    name: question,
+                    acceptedAnswer: { '@type': 'Answer', text: answer }
+                }))
+            },
+            breadcrumb(p.url, [
+                ['Strona główna', url()],
+                ['Skup węglików spiekanych', p.url]
+            ])
+        ]
+    },
     ...cities.map((city) => ({
         file: cityFile(city.id),
         path: cityFile(city.id),
@@ -219,7 +257,7 @@ const readTag = (html, re) => {
     return m ? m[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&') : '';
 };
 
-const seoBlock = (page, title, description) => {
+const seoBlock = (page, title, description, html) => {
     const lines = ['<!-- seo:start -->'];
     if (page.noindex) {
         lines.push('<meta name="robots" content="noindex, nofollow">');
@@ -243,7 +281,7 @@ const seoBlock = (page, title, description) => {
             `<meta name="twitter:title" content="${escapeHtml(title)}">`,
             `<meta name="twitter:description" content="${escapeHtml(description)}">`,
             `<meta name="twitter:image" content="${url(config.ogImage)}">`,
-            `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': page.graph({ url: pageUrl, title, description }) }, null, 2)}</script>`
+            `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': page.graph({ url: pageUrl, title, description }, html) }, null, 2)}</script>`
         );
     }
     lines.push('<!-- seo:end -->');
@@ -260,7 +298,7 @@ for (const page of pages) {
         m.includes('seo:') ? m : ''
     );
 
-    const block = seoBlock(page, title, description);
+    const block = seoBlock(page, title, description, html);
     if (html.includes('<!-- seo:start -->')) {
         html = html.replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/, block);
     } else {
