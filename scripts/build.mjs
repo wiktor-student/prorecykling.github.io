@@ -7,7 +7,7 @@
 //  3. generuje obraz społecznościowy img/og-image.jpg, sitemap.xml i robots.txt.
 // Adres witryny ustawiasz w scripts/site.config.json (siteUrl).
 import sharp from 'sharp';
-import { readFileSync, writeFileSync, statSync } from 'node:fs';
+import { readFileSync, writeFileSync, statSync, mkdirSync } from 'node:fs';
 
 const config = JSON.parse(readFileSync('scripts/site.config.json', 'utf8'));
 const { cities } = JSON.parse(readFileSync('data/implementations.json', 'utf8'));
@@ -250,6 +250,38 @@ const pages = [
     { file: '404.html', path: '404.html', noindex: true }
 ];
 
+/* ----------------------------------------------------------- bezpieczeństwo */
+
+// Content-Security-Policy w <meta> (GitHub Pages nie pozwala ustawiać nagłówków; pełny zestaw nagłówków – Cloudflare).
+// Wszystko hostujemy lokalnie (czcionki, skrypty, obrazy), nie ma inline-skryptów ani inline-stylów.
+const CSP = [
+    "default-src 'self'",
+    "script-src 'self'",
+    "style-src 'self'",
+    "font-src 'self'",
+    "img-src 'self' data:",
+    "media-src 'self'",
+    "connect-src 'self'",
+    "manifest-src 'self'",
+    "frame-src 'none'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    'upgrade-insecure-requests'
+].join('; ');
+
+const applyCsp = (html) => {
+    const tag = `<meta http-equiv="Content-Security-Policy" content="${CSP}">`;
+    if (/<meta http-equiv="Content-Security-Policy"[^>]*>/.test(html)) {
+        return html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, tag);
+    }
+    return html.replace(
+        /(<meta name="viewport"[^>]*>)/,
+        `$1
+        ${tag}`
+    );
+};
+
 /* ------------------------------------------------------------------- blok SEO */
 
 const readTag = (html, re) => {
@@ -292,6 +324,8 @@ for (const page of pages) {
     let html = readFileSync(page.file, 'utf8');
     const title = readTag(html, /<title[^>]*>([\s\S]*?)<\/title>/);
     const description = readTag(html, /<meta name="description" content="([^"]*)"/);
+
+    html = applyCsp(html);
 
     // usuń stare, ręcznie dodane JSON-LD (blok generujemy sami)
     html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, (m) =>
@@ -354,6 +388,19 @@ await sharp('img/IMG_9979.webp')
     .composite([{ input: overlay }])
     .jpeg({ quality: 84, mozjpeg: true })
     .toFile('img/og-image.jpg');
+
+// Plik security.txt (RFC 9116) – gdzie zgłaszać luki w zabezpieczeniach; data ważności odświeżana przy każdym buildzie.
+mkdirSync('.well-known', { recursive: true });
+const expires = new Date(Date.now() + 365 * 24 * 3600 * 1000).toISOString();
+writeFileSync(
+    '.well-known/security.txt',
+    `Contact: mailto:${config.email}
+Expires: ${expires}
+Preferred-Languages: pl, en
+Canonical: ${url('.well-known/security.txt')}
+`,
+    { newline: 'lf' }
+);
 
 console.log(
     `Gotowe: ${cities.length} stron miast, blok SEO w ${pages.length} plikach, sitemap.xml, robots.txt, og-image.jpg`

@@ -1,0 +1,4 @@
+Contact: mailto:skuptransformatorow@gmail.com
+Expires: 2027-11-24T13:48:56.640Z
+Preferred-Languages: pl, en
+Canonical: https://prorecykling.com/.well-known/security.txt

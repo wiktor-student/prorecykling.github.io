@@ -14,5 +14,6 @@
     "no-descending-specificity": null,
     "declaration-property-value-keyword-no-deprecated": null,
     "number-max-precision": null
-  }
+  },
+  "ignoreFiles": ["css/fonts.css"]
 }

@@ -864,3 +864,13 @@ address {
 .clearfix {
     clear: both;
 }
+
+/* strona 404 */
+.not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    min-height: 60vh;
+    text-align: center;
+}

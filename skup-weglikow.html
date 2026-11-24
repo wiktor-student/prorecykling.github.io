@@ -5,7 +5,7 @@
         <title data-i18n="meta.carbides.title">Skup węglików spiekanych – PRORECYKLING | Cała Polska</title>
         <meta name="description" content="Skup węglików spiekanych (węglik wolframu): płytki, wiertła, frezy, noże i odpady. Indywidualna wycena, odbiór z całej Polski, szybka płatność." data-i18n-attr="content:meta.carbides.desc">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; manifest-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
         <meta name="referrer" content="strict-origin-when-cross-origin">
         <meta name="theme-color" content="#232d5a">
         <link rel="manifest" href="site.webmanifest">
@@ -18,16 +18,12 @@
         <link rel="icon" type="image/png" href="img/favicon.png">
         <link rel="stylesheet" href="css/contact.css">
         <link rel="stylesheet" href="css/carbides.css">
+        <link rel="preload" href="fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/theme.css">
         <link rel="stylesheet" href="css/footer.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap" rel="stylesheet">
- 
-        
-   
-        <script src="js/i18n.js" defer></script>
+<script src="js/i18n.js" defer></script>
         <script src="js/components/site-footer.js" defer></script>
         <script src="js/script.js" defer></script>
         <script src="js/reveal.js" defer></script>
@@ -57,7 +53,7 @@
       "name": "PRORECYKLING",
       "legalName": "PRORECYKLING",
       "url": "https://prorecykling.com/",
-      "description": "Skup i ekologiczne przetwarzanie transformatorów na terenie całej Polski.",
+      "description": "Skup węglików spiekanych oraz skup i ekologiczne przetwarzanie transformatorów na terenie całej Polski.",
       "slogan": "Tworzymy lepszy świat",
       "logo": {
         "@type": "ImageObject",
@@ -228,20 +224,39 @@
 
                     <defs>
                     </defs>
-                    <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
-                        <path d="M 65.75 90 c 0.896 0 1.792 -0.342 2.475 -1.025 c 1.367 -1.366 1.367 -3.583 0 -4.949 L 29.2 45 L 68.225 5.975 c 1.367 -1.367 1.367 -3.583 0 -4.95 c -1.367 -1.366 -3.583 -1.366 -4.95 0 l -41.5 41.5 c -1.367 1.366 -1.367 3.583 0 4.949 l 41.5 41.5 C 63.958 89.658 64.854 90 65.75 90 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                    <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"  stroke="none" stroke-width="0" stroke-dasharray="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" fill="none" fill-rule="nonzero" opacity="1">
+                        <path d="M 65.75 90 c 0.896 0 1.792 -0.342 2.475 -1.025 c 1.367 -1.366 1.367 -3.583 0 -4.949 L 29.2 45 L 68.225 5.975 c 1.367 -1.367 1.367 -3.583 0 -4.95 c -1.367 -1.366 -3.583 -1.366 -4.95 0 l -41.5 41.5 c -1.367 1.366 -1.367 3.583 0 4.949 l 41.5 41.5 C 63.958 89.658 64.854 90 65.75 90 z" transform=" matrix(1 0 0 1 0 0) " stroke="none" stroke-width="1" stroke-dasharray="none" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" fill="rgb(0,0,0)" fill-rule="nonzero" opacity="1" />
                     </g>
                     </svg>
                 </a>
                 <h1 data-i18n="carb.h1">Skup węglików spiekanych</h1>
             </div>
             <div id="main-contact-text">
-                <p data-i18n="carb.lead">Oprócz transformatorów skupujemy także węgliki spiekane (węglik wolframu) – zużyte narzędzia skrawające i odpady produkcyjne. Indywidualna wycena, odbiór z terenu całej Polski i szybka płatność.</p>
+                <p data-i18n="carb.lead">Skupujemy węgliki spiekane (węglik wolframu) – zużyte narzędzia skrawające i odpady produkcyjne. Indywidualna wycena, odbiór z terenu całej Polski i szybka płatność.</p>
             </div>
 
             <div class="contact-quick">
                 <a class="square-button" href="contact.html?temat=weglik" data-i18n="carb.cta.quote">Zapytaj o wycenę</a>
                 <a class="square-button contact-quick__ghost" href="tel:+48792977793" data-i18n="carb.cta.call">Zadzwoń: 792 977 793</a>
+            </div>
+
+            <div class="carbide-gallery carbide-gallery--wide">
+                <figure class="carbide-photo">
+                            <img src="img/weglik-plytki-mieszane.webp" alt="Sterta zużytych płytek skrawających z węglika spiekanego w różnych kształtach" data-i18n-attr="alt:carb.g1.alt" width="690" height="917" loading="lazy" decoding="async">
+                            <figcaption data-i18n="carb.g1.cap">Płytki skrawające</figcaption>
+                        </figure>
+                        <figure class="carbide-photo">
+                            <img src="img/weglik-narzedzia-mieszane.webp" alt="Zużyte frezy, wiertła i płytki skrawające z węglika spiekanego" data-i18n-attr="alt:carb.g2.alt" width="690" height="917" loading="lazy" decoding="async">
+                            <figcaption data-i18n="carb.g2.cap">Frezy, wiertła i płytki</figcaption>
+                        </figure>
+                        <figure class="carbide-photo">
+                            <img src="img/weglik-plytki-powlekane.webp" alt="Zużyte płytki skrawające z powłokami, w tym w kolorze złotym" data-i18n-attr="alt:carb.g3.alt" width="690" height="920" loading="lazy" decoding="async">
+                            <figcaption data-i18n="carb.g3.cap">Płytki z powłokami</figcaption>
+                        </figure>
+                        <figure class="carbide-photo">
+                            <img src="img/weglik-wiertla-frezy.webp" alt="Zużyte wiertła i frezy z węglika spiekanego" data-i18n-attr="alt:carb.g4.alt" width="690" height="920" loading="lazy" decoding="async">
+                            <figcaption data-i18n="carb.g4.cap">Wiertła i frezy z węglika</figcaption>
+                        </figure>
             </div>
 
             <div class="carbide-grid">

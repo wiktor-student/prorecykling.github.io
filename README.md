@@ -72,3 +72,12 @@ Skrypty używają `window.i18n.t('klucz', 'polski tekst')` i zdarzenia `i18n:cha
 
 Adres witryny jest w `scripts/site.config.json` (`siteUrl`). Domena produkcyjna: prorecykling.com (plik `CNAME`). Przy zmianie domeny zmień `siteUrl` i `CNAME`, potem `npm run build`.
 Tytuł i opis strony głównej oraz kontaktu edytuj w ich `<title>` i `<meta name="description">` – build przepisuje je do Open Graph/Twitter.
+
+## Bezpieczeństwo
+
+- **Zero zasobów zewnętrznych:** czcionki (Montserrat, Material Symbols) i biblioteki są hostowane lokalnie (`fonts/`, `vendor/`) – brak połączeń z Google, lepsza prywatność (RODO) i wydajność.
+- **CSP:** polityka ustawiana centralnie w `scripts/build.mjs` (`script-src 'self'`, `style-src 'self'`, bez inline-skryptów i inline-stylów, `frame-src 'none'`, `upgrade-insecure-requests`). Zmieniasz ją w jednym miejscu i uruchamiasz `npm run build`.
+- **Zdjęcia:** oryginały z telefonu zawierają lokalizację GPS (EXIF). Leżą wyłącznie lokalnie w `originals/` (ignorowane przez git); publikujemy tylko WebP bez metadanych (`npm run images`).
+- **security.txt:** `/.well-known/security.txt` (data ważności odświeżana przy każdym buildzie).
+- **Nagłówki HTTP** (HSTS, X-Frame-Options / `frame-ancestors`, Permissions-Policy itd.) nie są możliwe na GitHub Pages – ustaw je w Cloudflare (Rules → Transform Rules → Modify Response Header).
+- **Repozytorium:** włączone secret scanning z push protection, alerty i automatyczne poprawki Dependabot, ochrona gałęzi `main` przed force-push i usunięciem.

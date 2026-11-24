@@ -3,3 +3,5 @@ node_modules/
 Thumbs.db
 *.log
 .claude/
+# oryginalne zdjęcia/filmy z telefonu (zawierają metadane EXIF z lokalizacją GPS) – nie publikujemy
+originals/

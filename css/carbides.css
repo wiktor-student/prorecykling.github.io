@@ -10,9 +10,9 @@
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
     width: 100%;
     margin: 0 auto;
     padding: 28px 24px;
@@ -47,7 +47,7 @@
     color: #7ed482; /* jaśniejsza zieleń: kontrast na granacie */
 }
 
-.carbide-teaser__text p:last-child {
+.carbide-teaser__lead {
     max-width: 58ch;
     color: rgb(255 255 255 / 82%);
     line-height: 1.6;
@@ -57,6 +57,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .carbide-btn {
@@ -91,6 +92,113 @@
 .carbide-btn--ghost:hover {
     border-color: #fff;
     background: rgb(255 255 255 / 12%);
+}
+
+.carbide-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carbide-chips li {
+    padding: 6px 12px;
+    border: 1px solid rgb(255 255 255 / 20%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 10%);
+    color: #fff;
+    font-size: var(--font-sm);
+    font-weight: 600;
+}
+
+.carbide-teaser__link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #b9e6bb;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.carbide-teaser__link:hover {
+    color: #fff;
+}
+
+/* ---------- Galeria zdjęć węglików ---------- */
+.carbide-gallery {
+    display: grid;
+    gap: 12px;
+}
+
+.carbide-gallery--grid2,
+.carbide-gallery--wide {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.carbide-gallery--wide {
+    margin: 18px 0 6px;
+}
+
+.carbide-photo {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    aspect-ratio: 3 / 4;
+    background: #1b2038;
+    box-shadow: 0 10px 26px rgb(35 45 90 / 22%);
+}
+
+.carbide-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.carbide-photo figcaption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 30px 12px 10px;
+    background: linear-gradient(to top, rgb(15 21 48 / 90%), transparent);
+    color: #fff;
+    font-size: var(--font-sm);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .carbide-photo:hover img {
+        transform: scale(1.06);
+    }
+}
+
+/* ---------- Karty „co skupujemy” / „jak to działa” na stronie głównej ---------- */
+.carbide-more {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    margin: 18px auto 0;
+}
+
+.carb-card {
+    box-sizing: border-box;
+    padding: 22px;
+    border: 1px solid rgb(35 45 90 / 10%);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow:
+        0 1px 2px rgb(35 45 90 / 6%),
+        0 12px 32px rgb(35 45 90 / 9%);
+}
+
+.carb-card h3 {
+    margin: 0 0 14px;
+    color: var(--ink, #1b2038);
+    font-size: var(--font-medium);
 }
 
 /* ---------- Strona skup-weglikow.html ---------- */
@@ -212,10 +320,14 @@
 
 @media (min-width: 768px) {
     .carbide-teaser__inner {
-        flex-direction: row;
+        grid-template-columns: 1.05fr 1fr;
         align-items: center;
-        justify-content: space-between;
+        gap: 36px;
         padding: 36px 40px;
+    }
+
+    .carbide-more {
+        grid-template-columns: 1fr 1fr;
     }
 
     .carbide-teaser h2 {
@@ -241,6 +353,16 @@
 
     .carbide-faq {
         margin-top: 12px;
+    }
+
+    .carbide-gallery--wide {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 22px;
+    }
+
+    .carbide-gallery--grid2 {
+        gap: 16px;
     }
 }
 

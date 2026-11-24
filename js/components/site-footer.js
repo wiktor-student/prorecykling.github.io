@@ -85,7 +85,7 @@
                 <div class="site-footer__grid">
                     <div class="site-footer__brand">
                         <p class="site-footer__logo">${escapeHtml(name)}</p>
-                        <p>${escapeHtml(t('footer.tagline', 'Skup i ekologiczne przetwarzanie transformatorów. Najlepsze ceny, najszybsza realizacja.'))}</p>
+                        <p>${escapeHtml(t('footer.tagline', 'Skup węglików spiekanych i transformatorów. Najlepsze ceny, najszybsza realizacja.'))}</p>
                         <ul class="site-footer__socials" aria-label="${escapeHtml(t('footer.socials', 'Media społecznościowe'))}">${socials.map(socialLink).join('')}</ul>
                     </div>
 

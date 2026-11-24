@@ -2,6 +2,16 @@
 (() => {
     'use strict';
 
+    /* Ochrona przed clickjackingiem: strona osadzona w cudzej ramce jest ukrywana. */
+    if (window.top !== window.self) {
+        document.documentElement.hidden = true;
+        try {
+            window.top.location = window.self.location.href;
+        } catch {
+            /* przeglądarka zablokowała nawigację ramki nadrzędnej – zostaje ukryta strona */
+        }
+    }
+
     /* ---------- Menu mobilne ---------- */
     const toggle = document.getElementById('menu-button');
     const menu = document.getElementById('mobile-menu');

@@ -1,5 +1,5 @@
 // Generuje wersje WebP wszystkich rastrowych obrazów użytych w plikach HTML.
-// Użycie: npm run images   (oryginały w img/ zostają nietknięte)
+// Użycie: npm run images   (oryginały w originals/ zostają nietknięte; WebP nie zawierają metadanych EXIF/GPS)
 import sharp from 'sharp';
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { basename, extname } from 'node:path';
@@ -41,7 +41,9 @@ for (const file of htmlFiles) {
 
 const sizes = {};
 for (const name of [...refs].sort()) {
-    const src = `img/${name}`;
+    if (name.startsWith('og-image')) continue; // obraz społecznościowy generuje scripts/build.mjs
+    // oryginały ze zdjęć/telefonu leżą lokalnie w originals/ (z EXIF/GPS – nigdy nie trafiają do repozytorium)
+    const src = existsSync(`originals/${name}`) ? `originals/${name}` : `img/${name}`;
     if (!existsSync(src) || !RASTER.test(src)) continue;
 
     const meta = await sharp(src).metadata();
@@ -60,6 +62,20 @@ for (const name of [...refs].sort()) {
 
     sizes[name] = { webp: `${stem}.webp`, width: info.width, height: info.height };
     console.log(`${dest.padEnd(34)} ${info.width}x${info.height}  ${(info.size / 1024).toFixed(0)} kB`);
+}
+
+// Przycięte zdjęcia-wzorce (img/src/*.jpg) → img/<nazwa>.webp (np. galeria węglików).
+if (existsSync('img/src')) {
+    for (const file of readdirSync('img/src').filter((f) => RASTER.test(f))) {
+        const stem = basename(file, extname(file));
+        const info = await sharp(`img/src/${file}`)
+            .rotate()
+            .resize({ width: 900, withoutEnlargement: true })
+            .webp({ quality: 82, effort: 6 })
+            .toFile(`img/${stem}.webp`);
+        sizes[`src/${file}`] = { webp: `${stem}.webp`, width: info.width, height: info.height };
+        console.log(`img/${stem}.webp`.padEnd(34), `${info.width}x${info.height}  ${(info.size / 1024).toFixed(0)} kB`);
+    }
 }
 
 writeFileSync('scripts/image-sizes.json', JSON.stringify(sizes, null, 2) + '\n');

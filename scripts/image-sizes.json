@@ -8,5 +8,25 @@
     "webp": "logo.webp",
     "width": 160,
     "height": 65
+  },
+  "src/weglik-narzedzia-mieszane.jpg": {
+    "webp": "weglik-narzedzia-mieszane.webp",
+    "width": 690,
+    "height": 917
+  },
+  "src/weglik-plytki-mieszane.jpg": {
+    "webp": "weglik-plytki-mieszane.webp",
+    "width": 690,
+    "height": 917
+  },
+  "src/weglik-plytki-powlekane.jpg": {
+    "webp": "weglik-plytki-powlekane.webp",
+    "width": 690,
+    "height": 920
+  },
+  "src/weglik-wiertla-frezy.jpg": {
+    "webp": "weglik-wiertla-frezy.webp",
+    "width": 690,
+    "height": 920
   }
 }
